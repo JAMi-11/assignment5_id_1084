@@ -8,37 +8,44 @@ class LandingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Landing Page')),
-      body: Center(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 30),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (_) => LoginSignupPage()));
-                },
-                child: Text('Login / Signup', style: TextStyle(fontSize: 18)),
+      body: Padding(
+        padding: EdgeInsets.all(30),
+        child: ListView(
+          children: [
+            SizedBox(height: 50),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => LoginSignupPage()));
+              },
+              style: ElevatedButton.styleFrom(
+                padding: EdgeInsets.symmetric(vertical: 15),
               ),
-              SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (_) => HomePage()));
-                },
-                child: Text('Home Page', style: TextStyle(fontSize: 18)),
+              child: Text('Login / Signup', style: TextStyle(fontSize: 20)),
+            ),
+            SizedBox(height: 30),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => HomePage()));
+              },
+              style: ElevatedButton.styleFrom(
+                padding: EdgeInsets.symmetric(vertical: 15),
               ),
-              SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (_) => ConverterPage()));
-                },
-                child: Text('Currency Converter', style: TextStyle(fontSize: 18)),
+              child: Text('Home Page', style: TextStyle(fontSize: 20)),
+            ),
+            SizedBox(height: 30),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => ConverterPage()));
+              },
+              style: ElevatedButton.styleFrom(
+                padding: EdgeInsets.symmetric(vertical: 15),
               ),
-            ],
-          ),
+              child: Text('Currency Converter', style: TextStyle(fontSize: 20)),
+            ),
+          ],
         ),
       ),
     );

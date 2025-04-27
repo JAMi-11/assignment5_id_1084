@@ -11,29 +11,42 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Country Flags')),
-      body: ListView.builder(
-        itemCount: countries.length,
-        itemBuilder: (context, index) {
-          final country = countries[index];
-          return Padding(
-            padding: EdgeInsets.all(16),
-            child: Row(
-              children: [
-                Image.asset(
-                  country['image']!,
-                  width: 100,
-                  height: 70,
-                  fit: BoxFit.cover,
-                ),
-                SizedBox(width: 20),
-                Text(
-                  country['name']!,
-                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
-          );
-        },
+      body: Padding(
+        padding: EdgeInsets.all(16),
+        child: GridView.builder(
+          itemCount: countries.length,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2, // 2 ta flag ek row te
+            mainAxisSpacing: 20,
+            crossAxisSpacing: 20,
+            childAspectRatio: 1,
+          ),
+          itemBuilder: (context, index) {
+            final country = countries[index];
+            return Container(
+              decoration: BoxDecoration(
+                color: Colors.blue[50],
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    country['image']!,
+                    width: 100,
+                    height: 70,
+                    fit: BoxFit.cover,
+                  ),
+                  SizedBox(height: 10),
+                  Text(
+                    country['name']!,
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+            );
+          },
+        ),
       ),
     );
   }
